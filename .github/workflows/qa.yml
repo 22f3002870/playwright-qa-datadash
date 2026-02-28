@@ -1,0 +1,25 @@
+name: Playwright QA 22f3002870@ds.study.iitm.ac.in
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          npm install
+          npx playwright install --with-deps
+
+      - name: Run Scraper 22f3002870@ds.study.iitm.ac.in
+        run: node scrape.js
